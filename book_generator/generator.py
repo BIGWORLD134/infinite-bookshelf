@@ -6,6 +6,8 @@ from .models import Book, Section, GenerationStatistics
 
 class BookGenerator:
     def __init__(self, api_key: str):
+        if not api_key:
+            raise ValueError("GROQ_API_KEY is required")
         self.groq_client = Groq(api_key=api_key)
         self.default_model = "llama-3.3-70b-specdec"
     
@@ -102,7 +104,7 @@ class BookGenerator:
             messages=[
                 {
                     "role": "system",
-                    "content": 'Write in JSON format:\n\n{"Title of section goes here":"Description of section goes here"}',
+                    "content": '{"Title of section goes here":"Description of section goes here"}',
                 },
                 {"role": "user", "content": prompt},
             ],

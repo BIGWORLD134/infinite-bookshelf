@@ -1,9 +1,18 @@
 import os
+from dotenv import load_dotenv
 from book_generator import BookGenerator
 
 def main():
+    # Load environment variables from .env file
+    load_dotenv()
+    
+    # Get API key from environment variable
+    api_key = os.getenv("GROQ_API_KEY")
+    if not api_key:
+        raise ValueError("GROQ_API_KEY environment variable is not set")
+    
     # Initialize generator with API key
-    generator = BookGenerator(api_key=os.getenv("GROQ_API_KEY"))
+    generator = BookGenerator(api_key=api_key)
     
     # Generate a book
     book_stream = generator.generate_book(
