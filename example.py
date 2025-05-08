@@ -7,7 +7,8 @@ def main():
     load_dotenv()
     
     # Get API key from environment variable
-    api_key = os.getenv("GROQ_API_KEY")
+    api_key="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"
+    
     if not api_key:
         raise ValueError("GROQ_API_KEY environment variable is not set")
     
