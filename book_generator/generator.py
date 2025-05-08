@@ -1,6 +1,5 @@
 from typing import Dict, Generator, Union, Optional
 import json
-from groq import Groq
 
 from .models import Book, Section, GenerationStatistics
 
